@@ -14,7 +14,7 @@ class Database
         $stm = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE ' . $field . '=:values');
         $values = ['values' => $values];
         $stm->execute($values);
-        return $stm->fetch();
+        return $stm->fetchAll();
     }
 
     //This function is used to query the database to fetch all items in the database

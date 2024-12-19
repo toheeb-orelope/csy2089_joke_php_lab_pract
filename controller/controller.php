@@ -2,7 +2,7 @@
 
 class Controller
 {
-    public function __construct(public $myJokes, public $output)
+    public function __construct(public $myJokes, )
     {
     }
 
@@ -10,11 +10,16 @@ class Controller
     public function home()
     {
 
-        $title = 'Internet Joke Database';
+        var_dump($this->myJokes->genFind('id', 2)[0]);
+        // $title = 'Internet Joke Database';
 
-        $joke = $this->myJokes->genFind('id', 2);
-        $this->output = loadTemlate('../templates/welcomePage.html.php', ['joke' => $joke]);
-        return $this->output;
+        // $joke = $this->myJokes->genFind('id', 2);
+        // $output = loadTemlate('../templates/welcomePage.html.php', ['joke' => $joke]);
+        return [
+            'title' => 'Internet Joke Database',
+            'tempName' => '../templates/welcomePage.html.php',
+            'variables' => ['joke' => $this->myJokes->genFind('id', 2)[0]],
+        ];
     }
 
     public function editJoke()
@@ -34,24 +39,26 @@ class Controller
             //Calling the func from the class
             $this->myJokes->genSave($_POST['jokes']);
 
-            header('location: jokes.php');
+            header('location: /jokes');
         } else {
 
-            $this->output = $this->myJokes->loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
-            $title = 'Edit';
-            return $this->output;
+            // $output = $this->myJokes->loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+            // $title = 'Edit';
+            return [
+                'title' => 'Edit Joke',
+                'tempName' => '../templates/editJoke.html.php',
+                'variables' => ['joke' => $joke],
+            ];
         }
     }
 
     public function jokes()
     {
         $jokes = $this->myJokes->genFindAll();
-
-        $variables = ['jokes' => $jokes];
-
-        $title = 'Joke list';
-
-        $this->output = loadTemlate('../templates/displayJokes.html.php', $variables);
-        return $this->output;
+        return [
+            'title' => 'Joke list',
+            'tempName' => '../templates/displayJokes.html.php',
+            'variables' => ['jokes' => $jokes],
+        ];
     }
 }

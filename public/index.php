@@ -7,7 +7,7 @@ require '../classes/database.php';
 require '../controller/controller.php';
 
 $myJokes = new Database($pdo, 'jokes', 'id');
-$myController = new Controller($myJokes, $output);
+$myController = new Controller($myJokes);
 
 
 // $pageName = ltrim(explode('?', $_SERVER['REQUEST_URI'])[0], '/');
@@ -20,8 +20,10 @@ $myController = new Controller($myJokes, $output);
 // require '../pages/' . $pageName . '.php' Not working at all 
 
 $pageName = explode('?', ltrim($_SERVER['REQUEST_URI'], '/'))[0];
-$output = $myController->$pageName();
+$page = $myController->$pageName();
 
+$title = $page['title'];
+$output = loadTemlate($page['tempName'], $page['variables']);
 //Using $_SERVER['REQUEST_URI'] 
 /*
 if ($_SERVER['REQUEST_URI'] !== '/') {
