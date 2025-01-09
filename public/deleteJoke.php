@@ -26,6 +26,6 @@ if (isset($_GET['id'])) {
 // require_once('../templates/displayJokes.html.php');
 // $output = ob_get_clean();
 
-$output = loadTemlate('../templates/displayJokes.html.php', []);
+$output = loadTemplate('../templates/displayJokes.html.php', []);
 require_once('../templates/deleteJoke.php');
 */

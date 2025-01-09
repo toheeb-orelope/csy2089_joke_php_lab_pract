@@ -10,4 +10,4 @@ if (isset($_GET['id'])) {
 
 
 
-$output = loadTemlate('../templates/displayJokes.html.php', []);
+$output = loadTemplate('../templates/displayJokes.html.php', []);

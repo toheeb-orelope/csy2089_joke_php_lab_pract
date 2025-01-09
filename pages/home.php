@@ -11,4 +11,4 @@ $title = 'Internet Joke Database';
 
 
 $joke = $myJokes->genFind('id', 2);
-$output = loadTemlate('../templates/welcomePage.html.php', ['joke' => $joke]);
+$output = loadTemplate('../templates/welcomePage.html.php', ['joke' => $joke]);

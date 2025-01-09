@@ -5,4 +5,4 @@ $variables = ['jokes' => $jokes];
 
 $title = 'Joke list';
 
-$output = loadTemlate('../templates/displayJokes.html.php', $variables);
+$output = loadTemplate('../templates/displayJokes.html.php', $variables);

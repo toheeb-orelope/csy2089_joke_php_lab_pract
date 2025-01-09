@@ -45,7 +45,7 @@ if (isset($_POST['jokestext'])) {
     // require_once('../templates/editJoke.html.php');
     // $output = ob_get_clean();
     $joke = find($pdo, 'jokes', 'id', $_GET['id']);
-    $output = loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+    $output = loadTemplate('../templates/editJoke.html.php', ['joke' => $joke]);
     $title = 'Edit';
 }
 
@@ -72,10 +72,10 @@ if (isset($_POST['edit'])) {
     header('location: jokes.php');
 } else {
     //Calling a func from a func file
-    // $output = loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+    // $output = loadTemplate('../templates/editJoke.html.php', ['joke' => $joke]);
 
     //Calling the func from the class
-    $output = $myJokes->loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+    $output = $myJokes->loadTemplate('../templates/editJoke.html.php', ['joke' => $joke]);
     $title = 'Edit';
 }
 // $output = ob_get_clean();

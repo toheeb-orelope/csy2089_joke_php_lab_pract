@@ -1,13 +1,13 @@
 <?php foreach ($jokes as $joke) { ?>
     <blockquote>
 
-        <p> <?= '<a href="editJoke?id=' . $joke['id'] .
+        <p> <?= '<a href="edit?id=' . $joke['id'] .
             '">' . $joke['jokestext'] . ' ' . $joke['jokedate'] . '</a>' ?></p>
     </blockquote>
 
 
     <div class="container">
-        <a href="editJoke?id=<?= $joke['id'] ?>">
+        <a href="edit?id=<?= $joke['id'] ?>">
             <button type="button" class="btn btn-sm">Edite</button>
         </a>
         <a href="deleteJoke?id=<?= $joke['id'] ?>&delete=1">

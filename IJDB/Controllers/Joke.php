@@ -1,8 +1,9 @@
 <?php
 
-class Controller
+namespace IJDB\Controllers;
+class Joke
 {
-    public function __construct(public $myJokes, )
+    public function __construct(public $jokesTable, )
     {
     }
 
@@ -10,25 +11,23 @@ class Controller
     public function home()
     {
 
-        var_dump($this->myJokes->genFind('id', 2)[0]);
+        // var_dump($this->jokesTable->genFind('id', 2)[0]);
         // $title = 'Internet Joke Database';
 
-        // $joke = $this->myJokes->genFind('id', 2);
-        // $output = loadTemlate('../templates/welcomePage.html.php', ['joke' => $joke]);
+        // $joke = $this->jokesTable->genFind('id', 2);
+        // $output = loadTemplate('../templates/welcomePage.html.php', ['joke' => $joke]);
         return [
             'title' => 'Internet Joke Database',
             'tempName' => '../templates/welcomePage.html.php',
-            'variables' => ['joke' => $this->myJokes->genFind('id', 2)[0]],
+            'variables' => ['joke' => $this->jokesTable->genFind('id', 2)[0]],
         ];
     }
 
-    public function editJoke()
+    public function edit()
     {
         if (isset($_GET['id'])) {
-
-
             //Calling the func from the class
-            $joke = $this->myJokes->genFind('id', $_GET['id'][0]);
+            $joke = $this->jokesTable->genFind('id', $_GET['id'][0]);
         } else {
             $joke = false;
         }
@@ -37,12 +36,12 @@ class Controller
 
 
             //Calling the func from the class
-            $this->myJokes->genSave($_POST['jokes']);
+            $this->jokesTable->genSave($_POST['jokes']);
 
-            header('location: /jokes');
+            header('location: /list');
         } else {
 
-            // $output = $this->myJokes->loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+            // $output = $this->jokesTable->loadTemplate('../templates/editJoke.html.php', ['joke' => $joke]);
             // $title = 'Edit';
             return [
                 'title' => 'Edit Joke',
@@ -52,9 +51,9 @@ class Controller
         }
     }
 
-    public function jokes()
+    public function list()
     {
-        $jokes = $this->myJokes->genFindAll();
+        $jokes = $this->jokesTable->genFindAll();
         return [
             'title' => 'Joke list',
             'tempName' => '../templates/displayJokes.html.php',

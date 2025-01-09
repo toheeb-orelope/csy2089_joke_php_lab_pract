@@ -20,7 +20,7 @@ $title = 'Joke list';
 //Using without execute() and fetchAll() or extra variable
 // $output = loadTemplate('../templates/displayJokes.html.php', ['jokes' => $jokes]);
 
-$output = loadTemlate('../templates/displayJokes.html.php', $variables);
+$output = loadTemplate('../templates/displayJokes.html.php', $variables);
 
 require '../templates/layout.html.php';
 */

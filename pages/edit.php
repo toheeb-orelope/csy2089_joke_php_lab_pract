@@ -17,6 +17,6 @@ if (isset($_POST['edit'])) {
     header('location: jokes.php');
 } else {
 
-    $output = $myJokes->loadTemlate('../templates/editJoke.html.php', ['joke' => $joke]);
+    $output = $myJokes->loadTemplate('../templates/editJoke.html.php', ['joke' => $joke]);
     $title = 'Edit';
 }

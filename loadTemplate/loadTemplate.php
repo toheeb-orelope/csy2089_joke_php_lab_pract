@@ -1,6 +1,6 @@
 <?php
 //This function is used to load file such as templates file and it value send it to the browser
-function loadTemlate($fileName, $variables)
+function loadTemplate($fileName, $variables)
 {
     //Extract keyword For each element in the array, it creates a variable with the name of the key
     extract($variables);

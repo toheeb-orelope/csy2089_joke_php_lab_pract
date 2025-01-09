@@ -1,5 +1,11 @@
 <?php
-class Database
+
+//This is the entry point of the application, 
+//which work with the controllers and the templates, 
+//automatically loading the correct controller and template based on the URL.
+namespace GenericClasses;
+
+class DatabaseTable
 {
     //This type of construction called Property Promotion
     public function __construct(
@@ -38,7 +44,7 @@ class Database
     //This function is used to INTER item from the database
     function genInsert($record)
     {
-        $date = new DateTime();
+        $date = new \DateTime();
         $keys = array_keys($record);
         $values = implode(', ', $keys);
         $valuesWithColon = implode(', :', $keys);
@@ -78,13 +84,13 @@ class Database
         }
         try {
             $this->genInsert($record);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->genUpdate($record, );
         }
     }
 
     //This function is used to load file such as templates file and it value send it to the browser
-    function loadTemlate($fileName, $variables)
+    function loadTemplate($fileName, $variables)
     {
         extract($variables);
         ob_start();
